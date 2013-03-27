@@ -19,10 +19,10 @@ $.ajax({
 
         for(var i = 0; i < len; i++) {
             json = res[i]
-            //if(json.position_name.indexOf("农展馆") != -1 || json.position_name.indexOf("奥体") != -1 ) {
+            if(json.position_name) {
                 str += json.position_name + " : " + json.pm2_5;
                 str += "<br>";
-            //}
+            }
         }
         document.write(str);
       },
