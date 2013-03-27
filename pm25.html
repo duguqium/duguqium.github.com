@@ -13,19 +13,23 @@ $.ajax({
     dataType: "jsonp",
     jsonp: "callback",
     success: function(res){
-        vat len = res.lengh,
+        var len = res.length,
             str = "",
             json;
+
         for(var i = 0; i < len; i++) {
             json = res[i]
-            str += "监测点：" + json[0].position_name + ",pm2.5过去一小时:" + json[0].pm2_5 + ",数据发布时间：" + json[0].time_point;
-            str += "<br>"    
+            //if(json.position_name.indexOf("农展馆") != -1 || json.position_name.indexOf("奥体") != -1 ) {
+                str += json.position_name + " : " + json.pm2_5;
+                str += "<br>";
+            //}
         }
         document.write(str);
-    },
-    error: function(){
-        document.write('<p>暂无数据，请稍等</p>');
-    }
+      },
+      error: function(){
+          document.write('暂无数据，请稍等');
+      }
+
 });
 
 </script>
