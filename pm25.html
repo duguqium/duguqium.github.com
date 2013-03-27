@@ -14,17 +14,17 @@ $.ajax({
     jsonp: "callback",
     success: function(res){
         var len = res.length,
-            str = "",
+            str = [],
             json;
 
-        for(var i = 0; i < len; i++) {
+        for(var i = 0, j = 0; i < len; i++) {
             json = res[i]
             if(json.position_name) {
-                str += json.position_name + " : " + json.pm2_5;
-                str += "<br>";
+                str[j++] = json.position_name + " : " + json.pm2_5;
+                str[j++] = "<br>";
             }
         }
-        document.write(str);
+        document.write(str.join(""));
       },
       error: function(){
           document.write('暂无数据，请稍等');
